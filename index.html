@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum DOM dan Event — Lab6Web</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="judul">Latihan DOM</h1>
+            <p>Praktikum 6 (Pertemuan 7) — JavaScript DOM, Event Handling, Validasi Form &amp; Interaksi Pengguna</p>
+        </header>
+
+        <!-- Latihan 1 & 2: Mengubah Teks dengan DOM & Event Click -->
+        <section class="card" id="section-latihan1-2">
+            <h2>Latihan 1 &amp; 2 — Mengubah Teks dengan DOM dan Event Click</h2>
+            <p id="pesan" class="status-box">Belum ada tindakan.</p>
+            <div style="margin-top: 12px;">
+                <button id="tombolAksi" type="button">Klik Saya (Tampilkan Waktu)</button>
+                <button id="tombolUbahKalimat" type="button" class="secondary">Ubah Kalimat Lain</button>
+            </div>
+        </section>
+
+        <!-- Latihan 3: Mengubah Kelas dan Gaya CSS -->
+        <section class="card" id="section-latihan3">
+            <h2>Latihan 3 — Mengubah Kelas dan Gaya CSS (<code>classList.toggle</code>)</h2>
+            <p id="teksGaya">Paragraf ini dapat diubah gaya tampilannya menggunakan class CSS <code>.highlight</code> dan <code>.teks-besar</code>.</p>
+            <div style="margin-top: 12px;">
+                <button id="tombolGaya" type="button">Ubah Gaya (Toggle)</button>
+            </div>
+        </section>
+
+        <!-- Latihan 4: Event Input dan Penghitung Karakter -->
+        <section class="card" id="section-latihan4">
+            <h2>Latihan 4 — Event Input dan Penghitung Karakter</h2>
+            <div class="form-group">
+                <label for="namaInput">Nama (Maksimal 40 karakter):</label>
+                <input type="text" id="namaInput" maxlength="40" placeholder="Ketik nama Anda di sini...">
+            </div>
+            <p class="status-box">Jumlah karakter: <span id="jumlahKarakter">0</span> / 40</p>
+        </section>
+
+        <!-- Latihan 5 & Eksperimen 2: Validasi Form Pendaftaran -->
+        <section class="card" id="section-latihan5">
+            <h2>Latihan 5 — Validasi Form Pendaftaran (+ Eksperimen Mandiri No. 2)</h2>
+            <p style="margin-bottom: 12px; font-size: 0.9rem; color: #475569;">
+                Ketentuan: Nama wajib diisi (minimal 3 karakter), format email harus valid, dan usia berupa bilangan bulat 17–100.
+            </p>
+            <form id="formPendaftaran" novalidate>
+                <div class="form-group">
+                    <label for="nama">Nama lengkap</label>
+                    <input id="nama" name="nama" type="text" placeholder="Minimal 3 karakter">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="contoh@domain.com">
+                </div>
+                <div class="form-group">
+                    <label for="usia">Usia</label>
+                    <input id="usia" name="usia" type="number" min="17" max="100" placeholder="17 - 100">
+                </div>
+                <button type="submit">Daftar</button>
+            </form>
+            <p id="pesanForm" class="status-box" aria-live="polite">Silakan isi form pendaftaran di atas.</p>
+        </section>
+
+        <!-- Latihan 6 & Eksperimen 1: Daftar Tugas Sederhana (To-do List) -->
+        <section class="card" id="section-latihan6">
+            <h2>Latihan 6 — Daftar Tugas Sederhana / To-do List (+ Eksperimen Mandiri No. 1)</h2>
+            <div class="form-group">
+                <label for="inputTugas">Tugas baru</label>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                    <input id="inputTugas" type="text" placeholder="Tulis nama tugas...">
+                    <button id="tambahTugas" type="button" style="margin-top: 0;">Tambah</button>
+                </div>
+            </div>
+            <p id="pesanTugas" class="status-box" aria-live="polite">Belum ada tugas yang ditambahkan.</p>
+            <ul id="daftarTugas"></ul>
+        </section>
+
+        <!-- Bagian F: Mini Project — Form Pendaftaran Workshop (+ Eksperimen 3) -->
+        <section class="card" id="section-miniproject">
+            <h2>F. Mini Project — Form Pendaftaran Workshop (+ Eksperimen Mandiri No. 3)</h2>
+            <div class="grid-2">
+                <div>
+                    <form id="formWorkshop" novalidate>
+                        <div class="form-group">
+                            <label for="wsNama">Nama Peserta (Min. 3 karakter)</label>
+                            <input type="text" id="wsNama" placeholder="Masukkan nama lengkap">
+                        </div>
+                        <div class="form-group">
+                            <label for="wsEmail">Email Aktif</label>
+                            <input type="email" id="wsEmail" placeholder="nama@kampus.ac.id">
+                        </div>
+                        <div class="form-group">
+                            <label for="wsSesi">Pilihan Sesi Workshop</label>
+                            <select id="wsSesi">
+                                <option value="">-- Pilih Sesi Workshop --</option>
+                                <option value="Sesi 1: Fundamental Modern JavaScript & DOM (09.00 - 11.30 WIB)">Sesi 1: Fundamental Modern JavaScript &amp; DOM</option>
+                                <option value="Sesi 2: Frontend UI/UX & Event Architecture (13.00 - 15.30 WIB)">Sesi 2: Frontend UI/UX &amp; Event Architecture</option>
+                                <option value="Sesi 3: Fullstack Web API & Form Security (16.00 - 18.00 WIB)">Sesi 3: Fullstack Web API &amp; Form Security</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="wsCatatan">Motivasi Mengikuti Workshop (Maks. 120 karakter)</label>
+                            <textarea id="wsCatatan" rows="3" maxlength="120" placeholder="Tuliskan motivasi singkat Anda..."></textarea>
+                            <small style="display: block; color: #64748b; margin-top: 4px;">
+                                Karakter motivasi: <span id="wsHitungKarakter">0</span> / 120
+                            </small>
+                        </div>
+                        <div>
+                            <button type="submit" id="wsSubmitBtn">Daftar Workshop</button>
+                            <button type="button" id="wsResetBtn" class="secondary">Reset Input</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    <div class="summary-card">
+                        <h3>Ringkasan Input Langsung (Live Preview)</h3>
+                        <p class="summary-item"><strong>Nama Peserta:</strong> <span id="previewNama">-</span></p>
+                        <p class="summary-item"><strong>Email:</strong> <span id="previewEmail">-</span></p>
+                        <p class="summary-item"><strong>Sesi Dipilih:</strong> <span id="previewSesi">Belum memilih sesi</span></p>
+                        <p class="summary-item"><strong>Motivasi:</strong> <span id="previewCatatan">-</span></p>
+                    </div>
+                    <p id="infoSesiChange" class="status-box" style="margin-top: 12px;">
+                        Info Sesi (Event <code>change</code>): Silakan pilih sesi pada dropdown.
+                    </p>
+                    <p id="pesanWorkshop" class="status-box" aria-live="polite">
+                        Status Pendaftaran: Menunggu pengisian form.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian G: Eksperimen Mandiri No. 4 & 5 -->
+        <section class="card" id="section-eksperimen">
+            <h2>G. Eksperimen Mandiri (No. 4 &amp; No. 5)</h2>
+            <div style="margin-bottom: 16px;">
+                <h3>4. Menyembunyikan dan Menampilkan Paragraf dengan Class CSS</h3>
+                <button id="tombolToggleParagraf" type="button">Sembunyikan / Tampilkan Paragraf</button>
+                <p id="paragrafEksperimen" class="status-box" style="margin-top: 10px;">
+                    Paragraf ini disembunyikan atau ditampilkan menggunakan <code>classList.toggle("tersembunyi")</code> tanpa mengubah inline style secara langsung.
+                </p>
+            </div>
+            <div>
+                <h3>5. Analisis Script Tanpa Atribut <code>defer</code> di Bagian <code>&lt;head&gt;</code></h3>
+                <p style="font-size: 0.92rem; color: #334155;">
+                    Apabila tag <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> diletakkan di dalam <code>&lt;head&gt;</code> tanpa atribut <code>defer</code>, browser akan langsung mengeksekusi file JavaScript sebelum elemen-elemen di dalam <code>&lt;body&gt;</code> selesai diparsing. Akibatnya, pemanggilan <code>document.getElementById()</code> mengembalikan <code>null</code> dan memicu error <code>Uncaught TypeError: Cannot set properties of null (setting 'textContent')</code> atau <code>Cannot read properties of null (reading 'addEventListener')</code>.
+                </p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
